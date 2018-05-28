@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binggou.engine.business.dao.BgProjectCleanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.binggou.engine.business.entity.BgProjectClean">
+        <id column="id" property="id" />
+        <result column="projectNumber" property="projectNumber" />
+        <result column="yunProjectNumber" property="yunProjectNumber" />
+        <result column="projectName" property="projectName" />
+        <result column="beginDate" property="beginDate" />
+        <result column="endDate" property="endDate" />
+        <result column="noticePeriod" property="noticePeriod" />
+        <result column="validPeriod" property="validPeriod" />
+        <result column="companyName" property="companyName" />
+        <result column="country" property="country" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="area" property="area" />
+        <result column="sourceArea" property="sourceArea" />
+        <result column="projectPrice" property="projectPrice" />
+        <result column="firstCategory" property="firstCategory" />
+        <result column="secondCategory" property="secondCategory" />
+        <result column="sourceCategory" property="sourceCategory" />
+        <result column="dataFrom" property="dataFrom" />
+        <result column="internalReview" property="internalReview" />
+        <result column="resolutionType" property="resolutionType" />
+        <result column="transactionWay" property="transactionWay" />
+        <result column="payMoney" property="payMoney" />
+        <result column="payWay" property="payWay" />
+        <result column="payDate" property="payDate" />
+        <result column="createDate" property="createDate" />
+        <result column="enterpriseInfo" property="enterpriseInfo" />
+        <result column="stockStructure" property="stockStructure" />
+        <result column="auditReport" property="auditReport" />
+        <result column="financeReport" property="financeReport" />
+        <result column="imporInforDisclosure" property="imporInforDisclosure" />
+        <result column="transferInfo" property="transferInfo" />
+        <result column="transactionTerm" property="transactionTerm" />
+        <result column="motorVehicle" property="motorVehicle" />
+        <result column="immovables" property="immovables" />
+        <result column="mechanicalEquipment" property="mechanicalEquipment" />
+        <result column="rightCategory" property="rightCategory" />
+        <result column="assetType" property="assetType" />
+        <result column="transferorName" property="transferorName" />
+        <result column="file" property="file" />
+        <result column="isChoosed" property="isChoosed" />
+        <result column="remark" property="remark" />
+        <result column="transit_equipment" property="transitEquipment" />
+        <result column="stocks" property="stocks" />
+        <result column="house" property="house" />
+        <result column="land" property="land" />
+        <result column="deal_status" property="dealStatus" />
+        <result column="disclosure" property="disclosure" />
+        <result column="transferOfPropertyRights" property="transferOfPropertyRights" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, projectNumber, yunProjectNumber, projectName, beginDate, endDate, noticePeriod, validPeriod, companyName, country, province, city, area, sourceArea, projectPrice, firstCategory, secondCategory, sourceCategory, dataFrom, internalReview, resolutionType, transactionWay, payMoney, payWay, payDate, createDate, enterpriseInfo, stockStructure, auditReport, financeReport, imporInforDisclosure, transferInfo, transactionTerm, motorVehicle, immovables, mechanicalEquipment, rightCategory, assetType, transferorName, file, isChoosed, remark, transit_equipment AS transitEquipment, stocks, house, land, deal_status AS dealStatus, disclosure, transferOfPropertyRights
+    </sql>
+
+    <insert id="insertProject" parameterType="com.binggou.engine.business.entity.BgProjectClean" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into bg_project_clean (id, projectNumber, yunProjectNumber,
+        projectName, beginDate, endDate,
+        noticePeriod, validPeriod, companyName,
+        country, province, city,
+        area, sourceArea, projectPrice,
+        firstCategory, secondCategory, sourceCategory,
+        dataFrom, internalReview, resolutionType,
+        transactionWay, payMoney, payWay,
+        payDate, createDate, enterpriseInfo,
+        stockStructure, auditReport, financeReport,
+        imporInforDisclosure, transferInfo,
+        motorVehicle,immovables,mechanicalEquipment,rightCategory,assetType,transferorName,file,remark,
+        transit_equipment,stocks,house,land,deal_status,disclosure,
+        transferOfPropertyRights,
+        transactionTerm
+        )
+        values (#{id},
+        #{projectNumber},
+        #{yunProjectNumber},
+        #{projectName},
+        #{beginDate},
+        #{endDate},
+        #{noticePeriod},
+        #{validPeriod},
+        #{companyName},
+        #{country},
+        #{province},
+        #{city},
+        #{area},
+        #{sourceArea},
+        #{projectPrice},
+        #{firstCategory},
+        #{secondCategory},
+        #{sourceCategory},
+        #{dataFrom},
+        #{internalReview},
+        #{resolutionType},
+        #{transactionWay},
+        #{payMoney},
+        #{payWay},
+        #{payDate},
+        #{createDate},
+        #{enterpriseInfo},
+        #{stockStructure},
+        #{auditReport},
+        #{financeReport},
+        #{imporInforDisclosure},
+        #{transferInfo},
+        #{motorVehicle},
+        #{immovables},
+        #{mechanicalEquipment},
+        #{rightCategory},
+        #{assetType},
+        #{transferorName},
+        #{file},
+        #{remark},
+        #{transitEquipment},
+        #{stocks},
+        #{house},
+        #{land},
+        #{dealStatus},
+        #{disclosure},
+        #{transferOfPropertyRights},
+        #{transactionTerm}
+        )
+    </insert>
+</mapper>

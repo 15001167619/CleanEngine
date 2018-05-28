@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.binggou.cloud</groupId>
+    <artifactId>CleanEngine</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>CleanEngine</name>
+    <description>CleanEngine 项目数据清洗引擎</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version>
+    </parent>
+
+    <!--版本号 -->
+    <properties>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.plugins.version>3.7.0</maven.plugins.version>
+        <maven.surefire.version>2.21.0</maven.surefire.version>
+        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+        <devtools.version>2.0.0.RELEASE</devtools.version>
+        <mybatis.plus.version>2.1.9</mybatis.plus.version>
+        <mybatis.plus..starter.version>1.0.5</mybatis.plus..starter.version>
+        <druid.version>1.1.9</druid.version>
+        <mysql.version>6.0.6</mysql.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.16.20</lombok.version>
+        <fastjson.version>1.2.46</fastjson.version>
+        <mongo.driver.version>3.6.3</mongo.driver.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generate</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-support</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatisplus-spring-boot-starter</artifactId>
+            <version>${mybatis.plus..starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+    </dependencies>
+
+
+
+    <build>
+        <finalName>CleanEngine</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <configuration>
+                    <mainClass>com.binggou.engine.CleanEngineApplication</mainClass>
+                    <fork>true</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.plugins.version}</version>
+                <configuration>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>

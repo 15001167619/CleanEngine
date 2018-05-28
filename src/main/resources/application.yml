@@ -1,0 +1,58 @@
+###################  项目启动端口  ###################
+server:
+  port: 6080
+
+###################  spring配置  ###################
+spring:
+  profiles:
+    active: dev
+
+#####################################################################
+########################  定时任务 开启开关  ########################
+#####################################################################
+timedTask:
+  job-cheduleConfig-open: false #是否开启定时任务(true/false)
+
+###################  mybatis-plus配置  ###################
+mybatis-plus:
+  mapper-locations: classpath*:com/binggou/engine/business/dao/mappings/*.xml
+  typeAliasesPackage: com.binggou.engine.business.entity
+  global-config:
+    id-type: 0  # 0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+
+---
+
+#####################################################################
+########################  开发环境profile  ##########################
+#####################################################################
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://master.mysql.binggou.com:3306/binggou_cloud?serverTimezone=Asia/Shanghai
+    username: root
+    password: binggou_2016
+    filters: log4j,wall,mergeStat
+  data:
+      mongodb:
+        uri: mongodb://master.mongo.binggou.com:27017/binggou-core
+
+##############################################################
+########################  写入日志  ##########################
+##############################################################
+
+logging:
+  level.root: info
+  level.com.binggou.engine: debug
+  file: G:/mylog/cleanEngine.log
+
+

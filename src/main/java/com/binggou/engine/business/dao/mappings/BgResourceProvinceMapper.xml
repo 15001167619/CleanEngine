@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binggou.engine.business.dao.BgResourceProvinceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.binggou.engine.business.entity.BgResourceProvince">
+        <id column="id" property="id" />
+        <result column="countryID" property="countryId" />
+        <result column="provinceName" property="provinceName" />
+        <result column="isOrder" property="isOrder" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, countryId, provinceName, isOrder
+    </sql>
+
+    <select id="selectAllProvince" resultType="BgResourceProvince" >
+        select * from bg_resource_province
+    </select>
+
+    <select id="selectByPrimaryKey" resultType="BgResourceProvince" parameterType="java.lang.Integer" >
+        select * from bg_resource_province
+        where id = #{id}
+    </select>
+
+</mapper>

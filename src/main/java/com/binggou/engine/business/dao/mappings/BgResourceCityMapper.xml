@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binggou.engine.business.dao.BgResourceCityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.binggou.engine.business.entity.BgResourceCity">
+        <id column="id" property="id" />
+        <result column="ProvinceID" property="provinceId" />
+        <result column="CityName" property="cityName" />
+        <result column="IsOrder" property="isOrder" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, provinceId, cityName, isOrder
+    </sql>
+
+    <select id="selectAllCity" resultType="BgResourceCity" >
+        select * from bg_resource_city
+    </select>
+
+</mapper>

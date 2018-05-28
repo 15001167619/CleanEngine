@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binggou.engine.business.dao.BgResourceCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.binggou.engine.business.entity.BgResourceCategory">
+        <id column="id" property="id" />
+        <result column="CategoryName" property="categoryName" />
+        <result column="EnCategoryName" property="enCategoryName" />
+        <result column="FatherCatID" property="fatherCatId" />
+        <result column="FatherCatName" property="fatherCatName" />
+        <result column="IsOrder" property="isOrder" />
+        <result column="IsUse" property="isUse" />
+        <result column="Remark" property="remark" />
+        <result column="AddTime" property="addTime" />
+        <result column="AddUser" property="addUser" />
+        <result column="UpdateTime" property="updateTime" />
+        <result column="UpdateUser" property="updateUser" />
+        <result column="TemplateID" property="templateID" />
+        <result column="OriginalPicUrl" property="originalPicUrl" />
+        <result column="BigPicUrl" property="bigPicUrl" />
+        <result column="CenterPicUrl" property="centerPicUrl" />
+        <result column="SmallPicUrl" property="smallPicUrl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, CategoryName, EnCategoryName, FatherCatID, FatherCatName,
+        IsOrder, IsUse, Remark, AddTime, AddUser, UpdateTime, UpdateUser, TemplateID, OriginalPicUrl, BigPicUrl,
+        CenterPicUrl, SmallPicUrl
+    </sql>
+
+    <select id="selectByPrimaryKey" resultType="BgResourceCategory" parameterType="java.lang.Integer" >
+        select * from bg_resource_category
+        where id = #{id}
+    </select>
+
+    <select id="selectByCategoryName" resultType="BgResourceCategory" parameterType="java.lang.String" >
+        select * from bg_resource_category
+        where FatherCatID !=-1 and FatherCatID is not null and CategoryName = #{categoryName}
+    </select>
+
+    <select id="selectFirstByCategoryName" resultType="BgResourceCategory" parameterType="java.lang.String" >
+        select * from bg_resource_category
+        where (FatherCatID =-1 or FatherCatID is null) and CategoryName = #{categoryName}
+    </select>
+
+
+</mapper>
