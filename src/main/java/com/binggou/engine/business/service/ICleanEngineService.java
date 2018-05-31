@@ -7,4 +7,7 @@ package com.binggou.engine.business.service;
  * @date 2018-05-25 14:00
  */
 public interface ICleanEngineService {
+
+    void executeCleanEngine();
+
 }

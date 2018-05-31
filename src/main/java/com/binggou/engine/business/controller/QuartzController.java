@@ -51,7 +51,7 @@ public class QuartzController {
 
     @RequestMapping(value = "updateJob")
     public String updateJob() {
-        log.info("修改Job运行时间");
+        log.info("修改Job");
         String cronExpression = "0/5 * * * * ?";
         try {
             TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
@@ -61,16 +61,11 @@ public class QuartzController {
             }
             String oldTime = trigger.getCronExpression();
             if (!oldTime.equalsIgnoreCase(cronExpression)) {
-                // 触发器
                 TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
-                // 触发器名,触发器组
                 triggerBuilder.withIdentity("trigger_cleanEngineJob", "jobGroup");
                 triggerBuilder.startNow();
-                // 触发器时间设定
                 triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule(cronExpression));
-                // 创建Trigger对象
                 trigger = (CronTrigger) triggerBuilder.build();
-                // 方式一 ：修改一个任务的触发时间
                 scheduler.rescheduleJob(triggerKey, trigger);
             }
         } catch (SchedulerException e) {
