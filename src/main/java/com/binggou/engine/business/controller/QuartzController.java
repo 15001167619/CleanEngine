@@ -4,9 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 武海升
@@ -15,12 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018-05-30 10:20
  */
 @Slf4j
-@RestController
+@Controller
 public class QuartzController {
 
     @Autowired
     @Qualifier("Scheduler")
     private Scheduler scheduler;
+
+    /**
+     * 跳转到首页
+     */
+    @RequestMapping("")
+    public String index() {
+        return "index";
+    }
 
     @RequestMapping(value = "list")
     public String userListForm(Model model) {

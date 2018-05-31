@@ -1,0 +1,78 @@
+html{height:100%}
+body{height:auto;background:url(../../static/img/bj.png) no-repeat center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    color:rgba(255,255,255,.95)}
+.table {
+    background-color: #fdfdfd;
+    margin: auto;
+}
+.table-bordered {
+    border: 1px solid #ddd;
+    border-collapse: separate;
+    border-left: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.table th, .table td {
+    vertical-align: middle;
+}
+.table-bordered th, .table-bordered td {
+    border-left: 1px solid #ddd;
+}
+.table-condensed th, .table-condensed td {
+    padding: 5px;
+}
+.table th, .table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #09050a;
+    color:#000000;
+
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.div_class {
+    width: 750px;
+    margin: 10% auto 0;
+}
+.table_class{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1; color: #fff;
+    padding: 1px 5px;
+    margin: 0 5px 5px 0;
+    border-radius: 3px;
+    -webkit-transition: background-color .4s linear;
+    -moz-transition: background-color .4s linear;
+    transition: background-color .4s linear;
+}
+.table_class-1{
+    background-color: rgb(101, 148, 127);
+}
+.table_class-2{
+    background-color: #cc1f19;
+}
+.table_class-3{
+    background-color: #350908;
+}
+
+form {
+    background: rgb(202, 185, 167);
+    border: 1px solid rgba(255,255,255,.3);
+    -moz-box-shadow: 0 3px 0 rgba(12,12,12,.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,.03);
+    box-shadow: 0 3px 0 rgba(12,12,12,.03);
+    border-radius: 44px;
+    padding: 30px;
+}
+
+a:hover,a:visited,a:active,a:link {color: #fafcff;text-decoration:none;}
+
