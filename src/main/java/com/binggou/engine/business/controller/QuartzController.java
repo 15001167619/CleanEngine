@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author 武海升
@@ -26,39 +27,49 @@ public class QuartzController {
      * 跳转到首页
      */
     @RequestMapping("")
-    public String index() {
+    public String index(Model model) {
+        try {
+            TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
+            CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+            if (trigger != null) {
+                model.addAttribute("cronExpression",trigger.getCronExpression());
+            }
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
         return "index";
     }
 
-    @RequestMapping(value = "list")
-    public String userListForm(Model model) {
-        return "modules/userList";
-    }
 
     @RequestMapping(value = "executeJob")
-    public String executeJob() {
+    @ResponseBody
+    public Boolean executeJob() {
         log.info("重启Job");
         try {
             scheduler.resumeJob(JobKey.jobKey("cleanEngineJob","jobGroup"));
         } catch (SchedulerException e) {
             e.printStackTrace();
+            return false;
         }
-        return "executeJob";
+        return true;
     }
 
     @RequestMapping(value = "pauseJob")
-    public String pauseJob() {
+    @ResponseBody
+    public Boolean pauseJob() {
         log.info("停止Job");
         try {
             scheduler.pauseJob(JobKey.jobKey("cleanEngineJob","jobGroup"));
         } catch (SchedulerException e) {
             e.printStackTrace();
+            return false;
         }
-        return "pauseJob";
+        return true;
     }
 
     @RequestMapping(value = "updateJob")
-    public String updateJob() {
+    @ResponseBody
+    public Boolean updateJob() {
         log.info("修改Job");
         String cronExpression = "0/5 * * * * ?";
         try {
@@ -78,8 +89,9 @@ public class QuartzController {
             }
         } catch (SchedulerException e) {
             e.printStackTrace();
+            return false;
         }
-        return "updateJob";
+        return true;
     }
 
 }

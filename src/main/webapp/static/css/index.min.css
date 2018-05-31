@@ -7,7 +7,7 @@ body{height:auto;background:url(../../static/img/bj.png) no-repeat center fixed;
     color:rgba(255,255,255,.95)}
 .table {
     background-color: #fdfdfd;
-    margin: auto;
+    margin-top: 18px;
 }
 .table-bordered {
     border: 1px solid #ddd;
@@ -29,7 +29,7 @@ body{height:auto;background:url(../../static/img/bj.png) no-repeat center fixed;
 .table th, .table td {
     padding: 8px;
     line-height: 20px;
-    text-align: left;
+    text-align: center;
     vertical-align: top;
     border-top: 1px solid #09050a;
     color:#000000;
@@ -38,6 +38,7 @@ body{height:auto;background:url(../../static/img/bj.png) no-repeat center fixed;
 td, th {
     display: table-cell;
     vertical-align: inherit;
+    height: 30px;
 }
 .div_class {
     width: 750px;
@@ -67,11 +68,14 @@ td, th {
 form {
     background: rgb(202, 185, 167);
     border: 1px solid rgba(255,255,255,.3);
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,.03);
     box-shadow: 0 3px 0 rgba(12,12,12,.03);
     border-radius: 44px;
     padding: 30px;
+    height: 170px
+}
+.row{
+    margin-right: -453px;
+    margin-left: -121px;
 }
 
 a:hover,a:visited,a:active,a:link {color: #fafcff;text-decoration:none;}
