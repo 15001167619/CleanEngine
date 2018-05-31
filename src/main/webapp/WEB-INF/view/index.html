@@ -11,6 +11,8 @@
     <link href="${ctxPath}/static/css/sweetalert.css" rel="stylesheet" />
     <script src="${ctxPath}/static/js/jquery.min.js"></script>
     <script src="${ctxPath}/static/js/sweetalert.min.js"></script>
+    <script src="${ctxPath}/static/js/cronValidate.js"></script>
+    <script src="${ctxPath}/static/js/index.js"></script>
     <style>
 
 
@@ -52,52 +54,6 @@
         </div>
     </div>
 </div>
-<script>
-
-    function executeJob() {
-        $.ajax({
-            url: 'executeJob',
-            type: 'POST',
-            success: function (resunlt) {
-                if(resunlt==true){
-                    swal({
-                            title: "执行Job任务",
-                            text: "执行Job任务成功",
-                            type: "success",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定!",
-                            closeOnConfirm: false
-                        },
-                        function(){
-                            window.location.href = ""
-                        });
-                }
-            }
-        });
-    }
-
-    function pauseJob() {
-        $.ajax({
-            url: 'pauseJob',
-            type: 'POST',
-            success: function (resunlt) {
-                if(resunlt==true){
-                    swal({
-                            title: "暂停Job任务",
-                            text: "暂停Job任务成功",
-                            type: "success",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定!",
-                            closeOnConfirm: false
-                        },
-                        function(){
-                            window.location.href = ""
-                        });
-                }
-            }
-        });
-    }
-</script>
 
 </body>
 </html>
