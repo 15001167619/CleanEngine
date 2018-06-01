@@ -1,45 +1,49 @@
 /**
  * Created by 武海升 on 2018-05-31.
  */
+
+$(function(){
+    $('#executeJob').removeAttr('href onclick');
+});
+
 function executeJob() {
     $.ajax({
         url: 'executeJob',
         type: 'POST',
         success: function (resunlt) {
-            if(resunlt==true){
-                swal({
-                        title: "执行Job任务",
-                        text: "执行Job任务成功",
-                        type: "success",
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定!",
-                        closeOnConfirm: false
-                    },
-                    function(){
-                        window.location.href = ""
-                    });
+            if(resunlt.result==true){
+                swal("重启任务","重启Job成功","success");
+                $('#cronExpression').html(resunlt.cronExpression);
+                $('#executeJob').removeAttr('href onclick');
+                $('#updateJob').attr({
+                    "href" : "javascript:void(0);",
+                    "onclick" : "updateJob()"
+                });
+                $('#pauseJob').attr({
+                    "href" : "javascript:void(0);",
+                    "onclick" : "pauseJob()"
+                });
             }
         }
     });
 }
-
 function pauseJob() {
     $.ajax({
         url: 'pauseJob',
         type: 'POST',
         success: function (resunlt) {
             if(resunlt==true){
-                swal({
-                        title: "暂停Job任务",
-                        text: "暂停Job任务成功",
-                        type: "success",
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "确定!",
-                        closeOnConfirm: false
-                    },
-                    function(){
-                        window.location.href = "?pauseJob=pauseJob"
-                    });
+                swal("暂停任务","暂停Job成功","success");
+                $('#cronExpression').html("Job已停止");
+                $('#executeJob').attr({
+                    "href" : "javascript:void(0);",
+                    "onclick" : "executeJob()"
+                });
+                $('#updateJob').attr({
+                    "href" : "javascript:void(0);",
+                    "onclick" : "updateJob()"
+                });
+                $('#pauseJob').removeAttr('href onclick');
             }
         }
     });
@@ -69,18 +73,18 @@ function updateJob() {
                             cronExpression : inputValue
                         },
                         success: function (resunlt) {
-                            if(resunlt==true){
-                                swal({
-                                        title: "修改Job任务",
-                                        text: "修改Job任务成功",
-                                        type: "success",
-                                        confirmButtonColor: "#DD6B55",
-                                        confirmButtonText: "确定!",
-                                        closeOnConfirm: false
-                                    },
-                                    function(){
-                                        window.location.href = ""
-                                    });
+                            if(resunlt.result==true){
+                                swal("修改任务","修改Job成功","success");
+                                $('#cronExpression').html(resunlt.cronExpression);
+                                $('#executeJob').removeAttr('href onclick');
+                                $('#updateJob').attr({
+                                    "href" : "javascript:void(0);",
+                                    "onclick" : "updateJob()"
+                                });
+                                $('#pauseJob').attr({
+                                    "href" : "javascript:void(0);",
+                                    "onclick" : "pauseJob()"
+                                });
                             }
                         }
                     });

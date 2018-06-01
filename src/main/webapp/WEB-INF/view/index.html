@@ -18,6 +18,7 @@
 
 
 
+
     </style>
 </head>
 <body>
@@ -38,11 +39,11 @@
                     <tbody>
                     <tr>
                         <td>数据清洗引擎</td>
-                        <td>${cronExpression}</td>
+                        <td id="cronExpression">${cronExpression}</td>
                         <td>
-                            <a href ="javascript:void(0);" onclick ="executeJob()" class="table_class table_class-1">执行</a>
-                            <a href ="javascript:void(0);" onclick ="pauseJob()" class="table_class table_class-2">停止</a>
-                            <a href ="javascript:void(0);" onclick ="updateJob()" class="table_class table_class-3">修改</a>
+                            <a href ="javascript:void(0);" onclick ="executeJob()" class="table_class table_class-1" id="executeJob">执行</a>
+                            <a href ="javascript:void(0);" onclick ="pauseJob()" class="table_class table_class-2" id="pauseJob">停止</a>
+                            <a href ="javascript:void(0);" onclick ="updateJob()" class="table_class table_class-3" id="updateJob">修改</a>
                         </td>
                     </tr>
                     </tbody>

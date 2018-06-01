@@ -1,5 +1,6 @@
 package com.binggou.engine.business.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,33 +28,42 @@ public class QuartzController {
      * 跳转到首页
      */
     @RequestMapping("")
-    public String index(Model model,String pauseJob) {
+    public String index(Model model) {
+        model.addAttribute("cronExpression",getCronExpression());
+        return "index";
+    }
+
+    private String  getCronExpression(){
+        String cronExpression = "";
         try {
             TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
             CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
-            if (trigger != null && pauseJob==null) {
-                model.addAttribute("cronExpression",trigger.getCronExpression());
-            }else{
-                model.addAttribute("cronExpression","Job任务已暂停");
+            if (trigger != null) {
+                cronExpression = trigger.getCronExpression();
             }
         } catch (SchedulerException e) {
             e.printStackTrace();
+            return cronExpression;
         }
-        return "index";
+        return cronExpression;
     }
 
 
     @RequestMapping(value = "executeJob")
     @ResponseBody
-    public Boolean executeJob() {
+    public JSONObject executeJob() {
+        JSONObject jsonObject = new JSONObject();
         log.info("重启Job");
         try {
             scheduler.resumeJob(JobKey.jobKey("cleanEngineJob","jobGroup"));
+            jsonObject.put("result",true);
+            jsonObject.put("cronExpression",getCronExpression());
         } catch (SchedulerException e) {
             e.printStackTrace();
-            return false;
+            jsonObject.put("result",false);
+            return jsonObject;
         }
-        return true;
+        return jsonObject;
     }
 
     @RequestMapping(value = "pauseJob")
@@ -71,7 +81,8 @@ public class QuartzController {
 
     @RequestMapping(value = "updateJob")
     @ResponseBody
-    public Boolean updateJob( String cronExpression) {
+    public JSONObject updateJob( String cronExpression) {
+        JSONObject jsonObject = new JSONObject();
         log.info("修改Job");
         try {
             TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
@@ -88,11 +99,14 @@ public class QuartzController {
                 trigger = (CronTrigger) triggerBuilder.build();
                 scheduler.rescheduleJob(triggerKey, trigger);
             }
+            jsonObject.put("result",true);
+            jsonObject.put("cronExpression",cronExpression);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            return false;
+            jsonObject.put("result",false);
+            return jsonObject;
         }
-        return true;
+        return jsonObject;
     }
 
 }
