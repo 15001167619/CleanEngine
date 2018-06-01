@@ -23,6 +23,7 @@ public class TaskRunner  implements ApplicationRunner {
     private Scheduler scheduler;
 
     @Override
+    @SuppressWarnings("unchecked")
     public void run(ApplicationArguments applicationArguments) throws Exception {
         log.info("初始化测试任务");
         QuartzEntity quartz = new QuartzEntity();
