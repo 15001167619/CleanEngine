@@ -77,6 +77,8 @@ form {
     margin-right: -453px;
     margin-left: -121px;
 }
+input{color: #09050a;}
+input::-webkit-input-placeholder{color: #09050a;}
 
 a:hover,a:visited,a:active,a:link {color: #fafcff;text-decoration:none;}
 

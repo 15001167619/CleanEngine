@@ -27,12 +27,14 @@ public class QuartzController {
      * 跳转到首页
      */
     @RequestMapping("")
-    public String index(Model model) {
+    public String index(Model model,String pauseJob) {
         try {
             TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
             CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
-            if (trigger != null) {
+            if (trigger != null && pauseJob==null) {
                 model.addAttribute("cronExpression",trigger.getCronExpression());
+            }else{
+                model.addAttribute("cronExpression","Job任务已暂停");
             }
         } catch (SchedulerException e) {
             e.printStackTrace();
@@ -69,9 +71,8 @@ public class QuartzController {
 
     @RequestMapping(value = "updateJob")
     @ResponseBody
-    public Boolean updateJob() {
+    public Boolean updateJob( String cronExpression) {
         log.info("修改Job");
-        String cronExpression = "0/5 * * * * ?";
         try {
             TriggerKey triggerKey = TriggerKey.triggerKey("trigger_cleanEngineJob", "jobGroup");
             CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
