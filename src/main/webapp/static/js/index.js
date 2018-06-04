@@ -63,7 +63,7 @@ function updateJob() {
         },
         function (inputValue){
             if(inputValue){
-                var cronValidateResult = cronValidate(inputValue);
+                var cronValidateResult = cronValidate(inputValue.trim());
                 console.log(cronValidateResult);
                 if(cronValidateResult==true){
                     $.ajax({
@@ -96,6 +96,12 @@ function updateJob() {
             }
         }
     );
+}
+
+function copyValue() {
+    var cronValue = document.getElementById("cron");
+    cronValue.select();
+    document.execCommand("Copy");
 }
 
 

@@ -58,6 +58,12 @@ td, th {
 .table_class-1{
     background-color: rgb(101, 148, 127);
 }
+.table_class-button {
+    background-color: rgb(24, 21, 22);
+    margin-left: 20px;
+    width: 50px;
+    text-align: center;
+}
 .table_class-2{
     background-color: #cc1f19;
 }

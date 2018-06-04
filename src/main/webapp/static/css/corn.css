@@ -1,0 +1,90 @@
+.col
+{
+    width: 95px;
+}
+ul {
+    list-style:none;
+    padding-left:10px;
+}
+li {
+    height:20px;
+}
+
+.easyUi-layout{
+    width:830px;
+    height:560px;
+    border: 1px rgb(202, 196, 196) solid;
+    border-radius: 5px;
+    margin-left: 1070px;
+    margin-top: 60px;
+}
+.panel-noscroll{
+    opacity: 0.6;
+}
+.tabs{
+    height: 33px;
+}
+.tabs-title{
+    font-size: 26px;
+    padding: 26px;
+    color: #2e262d;
+    font-weight: bold;
+}
+.line {
+    height: 28px;
+    line-height: 28px;
+    margin: 1px;
+    margin-left: 80px;
+    font-weight: bold;
+}
+
+.imp {
+    padding-left: 80px;
+    font-weight: bold;
+}
+input[type=checkbox], input[type=radio] {
+    margin: 4px 3px 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #5b737d;
+    font-weight: bold;
+}
+
+.panel-body {
+    background-color: #ede4db;
+    color: #333;
+    font-size: 12px;
+}
+
+.spinner .spinner-text {
+    text-align: center;
+    border: 1px solid #0d0d0b !important;
+}
+
+.cron-start-year{
+    height: 26px !important;
+    width: 50px !important;
+    background-color: #e3dbd4;
+}
+.cron-end-year{
+    height: 26px !important;
+    width: 50px !important;
+    background-color: #e3dbd4;
+}
+
+.cron-style{
+    height: 26px !important;
+    width: 47px !important;
+    background-color: #e3dbd4;
+}
